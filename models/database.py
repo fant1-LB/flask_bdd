@@ -22,6 +22,7 @@ class PochettesForbin(db.Model):
 class CartonsAN(db.Model):
     __tablename__ = "CartonsAN"
     id=db.Column(db.Text(30), primary_key=True, unique=True)
+    
     titre= db.Column(db.Text(50))
     
 
