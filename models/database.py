@@ -5,12 +5,13 @@ db= SQLAlchemy(app)
 
 class ObjetDuFonds(db.Model):
     __tablename__ ='ObjetDuFonds'
-
-    id = db.Column(db.Text(30), primary_key= True, unique=True)
-    id_pour_les_AN = db.Column(db.Text(30))
-    id_nature = db.Column(db.Text(30))
-    id_contenant_orig = db.Column(db.Text(30), db.ForeignKey('PochettesForbin.id'))
-    id_contenant_contemporrain = db.Column(db.Text(30), db.ForeignKey('CartonsAN.id'))
+    dossier = db.Column(db.Text(30))
+    # dossier = db.Column(db.Text(30), db.ForeignKey('CartonsAN.id'))
+    Image = db.Column(db.Text(30), primary_key= True, unique=True)
+    Nature = db.Column(db.Text(30))
+    # id_contenant_orig = db.Column(db.Text(30), db.ForeignKey('PochettesForbin.id'))
+    id_contenant_orig = db.Column(db.Text(30))
+    
 
 
 class PochettesForbin(db.Model):

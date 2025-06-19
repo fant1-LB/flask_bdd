@@ -3,14 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.debug=True
-
+#Modifier ci dessous pour modifier le nom de la base
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-
+#Importer les fonctions et le modèle de la base
 from models.database import *
 from utils.fonctions import *
 importer_ou_pas = True
-nom_csv = "test1.csv"
-nom_table = "CartonsAN"
+nom_csv = "donnees_boites2_260.csv"
+nom_table = "ObjetDuFonds"
 
 
 if __name__ == '__main__':
