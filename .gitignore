@@ -39,3 +39,6 @@ Thumbs.db
 
 #virtual env#
 venv
+
+# datas #
+*.csv

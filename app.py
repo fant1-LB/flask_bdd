@@ -15,9 +15,9 @@ nom_table = "ObjetDuFonds"
 
 if __name__ == '__main__':
     with app.app_context():
-        
         db.create_all()
         if importer_ou_pas:
+            print("import de donnée")
             add_to_database(nom_csv, nom_table, db)
         
     app.run()

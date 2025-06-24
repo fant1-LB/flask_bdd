@@ -5,9 +5,10 @@ db= SQLAlchemy(app)
 
 class ObjetDuFonds(db.Model):
     __tablename__ ='ObjetDuFonds'
+    id = db.Column(db.Integer, primary_key=True)
     dossier = db.Column(db.Text(30))
     # dossier = db.Column(db.Text(30), db.ForeignKey('CartonsAN.id'))
-    Image = db.Column(db.Text(30), primary_key= True, unique=True)
+    Image = db.Column(db.Text(30))
     Nature = db.Column(db.Text(30))
     # id_contenant_orig = db.Column(db.Text(30), db.ForeignKey('PochettesForbin.id'))
     id_contenant_orig = db.Column(db.Text(30))

@@ -4,16 +4,18 @@ def appliquer_sql (df, liste_colonnes, db, nom_table):
     from sqlalchemy import text
     liste_cles = str(liste_colonnes).replace("[","").replace(']','')
     liste_valeurs =[]
-    print(liste_colonnes)
+    # print(liste_colonnes)
     for z in liste_colonnes:
          valeur= df[f'{z}']
          liste_valeurs.append(str(valeur))
     valeurs=str(liste_valeurs).replace("[","").replace(']','')
-    print(liste_cles)
+    # print(liste_cles)
     print(valeurs)
-    with db.engine.connect() as connection:
-                    connection.execute(text(f"INSERT INTO {nom_table} ({liste_cles}) VALUES ({valeurs})"))
-
+    with db.engine.begin() as connection:
+        print("connexion réussie")
+        connection.execute(text(f"INSERT INTO {nom_table} ({liste_cles}) VALUES ({valeurs})"))
+        
+        
 
 def add_to_database(csv, table, db):
     '''This function applies the previous function, in order to add the csv values, into a table in a definite database (db)'''
