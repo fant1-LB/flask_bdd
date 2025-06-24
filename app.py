@@ -4,13 +4,14 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.debug=True
 #Modifier ci dessous pour modifier le nom de la base
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///highvision.db'
 #Importer les fonctions et le modèle de la base
 from models.database import *
 from utils.fonctions import *
+
 importer_ou_pas = True
-nom_csv = "donnees_boites2_260.csv"
-nom_table = "ObjetDuFonds"
+liste_csv_pour_import = ["donnees_boites1.csv","donnees_boites2_260.csv"]
+liste_tables_pour_import = ["ObjetDuFonds","ObjetDuFonds"]
 
 
 if __name__ == '__main__':
@@ -18,6 +19,6 @@ if __name__ == '__main__':
         db.create_all()
         if importer_ou_pas:
             print("import de donnée")
-            add_to_database(nom_csv, nom_table, db)
+            mass_add_to_database(liste_csv_pour_import, liste_tables_pour_import, db)
         
     app.run()

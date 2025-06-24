@@ -10,7 +10,7 @@ def appliquer_sql (df, liste_colonnes, db, nom_table):
          liste_valeurs.append(str(valeur))
     valeurs=str(liste_valeurs).replace("[","").replace(']','')
     # print(liste_cles)
-    print(valeurs)
+    # print(valeurs)
     with db.engine.begin() as connection:
         print("connexion réussie")
         connection.execute(text(f"INSERT INTO {nom_table} ({liste_cles}) VALUES ({valeurs})"))
@@ -24,3 +24,8 @@ def add_to_database(csv, table, db):
     liste_colonnes = df.columns.tolist()
     df.apply(appliquer_sql,args=( liste_colonnes, db, table), axis=1)
         
+
+def mass_add_to_database(csv_list, tables, db):
+    '''This function takes as entry a duet of lists, the first one of csv files, the second the tables in which they should be added, it then adds their datas to the db'''
+    for i in range (0, len(csv_list)):
+        add_to_database(csv_list[i],tables[i],db)
