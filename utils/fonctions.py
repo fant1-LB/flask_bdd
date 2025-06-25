@@ -1,6 +1,7 @@
 
 def appliquer_sql (df, liste_colonnes, db, nom_table):
-    '''This function contains the SQL formula necessary to the insertion of a column in a database '''
+    '''This function contains the SQL formula necessary to the insertion of a column in a database, if a new entry conflicts with a preexisting entry, it will be ignored.
+     Remove the OR IGNORE statement in the SQL operation at the end of the function to change that '''
     from sqlalchemy import text
     liste_cles = str(liste_colonnes).replace("[","").replace(']','')
     liste_valeurs =[]
@@ -13,7 +14,7 @@ def appliquer_sql (df, liste_colonnes, db, nom_table):
     # print(valeurs)
     with db.engine.begin() as connection:
         print("connexion réussie")
-        connection.execute(text(f"INSERT INTO {nom_table} ({liste_cles}) VALUES ({valeurs})"))
+        connection.execute(text(f"INSERT OR IGNORE INTO {nom_table} ({liste_cles}) VALUES ({valeurs})"))
         
         
 
