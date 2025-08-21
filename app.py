@@ -10,7 +10,7 @@ from models.database import *
 from utils.fonctions import *
 
 importer_ou_pas = True
-liste_csv_pour_import = ["donnees_boites1.csv","donnees_boites2_260.csv"]
+liste_csv_pour_import = ["donnees_boites1.csv","donnees_boites2_260_def.csv"]
 liste_tables_pour_import = ["ObjetDuFonds","ObjetDuFonds"]
 
 
